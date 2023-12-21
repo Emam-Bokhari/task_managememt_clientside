@@ -1,8 +1,27 @@
+import { useContext } from "react";
 import { BiMenu } from "react-icons/bi";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../AuthProvider/AuthProvider";
+import { FaCircleUser } from "react-icons/fa6";
 
 
 const Navbar = () => {
+
+    const { user, logout } = useContext(AuthContext);
+
+
+    // logout functionality
+    const handleLogout = () => {
+        logout()
+            .then(() => {
+                return alert('Logout Successful!');
+            })
+            .catch((error) => {
+                return alert(error.message);
+            });
+    };
+
+    
     return (
         <div >
         <div className="navbar">
@@ -17,6 +36,10 @@ const Navbar = () => {
                     <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-4 shadow bg-base-100 rounded-box w-48">
 
                         <li><Link to="/">Home</Link></li>
+
+                        <li><Link to="/aboutUs">About Us</Link></li>
+
+                        <li><Link to="/contactUs">Contact Us</Link></li>
 
 
                         <li><Link to="/dashboard" >Dashboard</Link></li>
@@ -46,6 +69,29 @@ const Navbar = () => {
                         </NavLink>
                     </li>
 
+                    <li>
+                        <NavLink
+                            to="/aboutUs"
+                            className={({ isActive, isPending }) =>
+                                isPending ? "pending" : isActive ? "text-[#fc5026] underline" : ""
+                            }
+                        >
+                            About Us
+                        </NavLink>
+                    </li>
+
+
+                    <li>
+                        <NavLink
+                            to="/contactUs"
+                            className={({ isActive, isPending }) =>
+                                isPending ? "pending" : isActive ? "text-[#fc5026] underline" : ""
+                            }
+                        >
+                            Contact Us
+                        </NavLink>
+                    </li>
+
 
                     <li>
                         <NavLink to="/dashboard"
@@ -62,8 +108,7 @@ const Navbar = () => {
 
             <div className="navbar-end">
                 {/* Conditional rendering of user profile or login button */}
-                {/* button */}
-                {/* {user ? (
+                {user ? (
                     <div className="space-y-2">
                         <div className="flex gap-3 items-center ">
                             {user.photoURL ? (
@@ -77,9 +122,9 @@ const Navbar = () => {
                             )}
                             <p>{user.displayName || "User"}</p>
                         </div>
-                        <button
-                            onClick={handleLogout}
-                            className="bg-[#19cb98] px-3 py-1 rounded-sm text-[#2a2a2a] font-semibold text-lg"
+                        <button onClick={handleLogout}
+                            
+                            className="bg-[#975cec] px-4  py-1 rounded-full text-[#2a2a2a] font-semibold text-lg"
                         >
                             Logout
                         </button>
@@ -88,13 +133,12 @@ const Navbar = () => {
                     <div className="flex gap-3 items-center">
                         <FaCircleUser className="text-3xl" />
                         <Link to="/signin">
-                            <button className="bg-[#19cb98] px-2 py-1 rounded-sm text-lg font-semibold text-[#2a2a2a] tracking-wide">
+                            <button className="bg-[#975cec]  px-4 py-1 rounded-full text-lg font-semibold text-white tracking-wide">
                                 Login
                             </button>
                         </Link>
                     </div>
-                )} */}
-                <button>Login</button>
+                )}
             </div>
 
         </div>

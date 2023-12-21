@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Footer from "../../sharedComponents/Footer/Footer";
 import Navbar from "../../sharedComponents/Navbar";
 
@@ -19,7 +20,9 @@ const Home = () => {
             <h2 className="text-[#bababa ] text-center text-lg mt-8" >Plan projects, stay on track, and deliver on time without <br />overworking your team.</h2>
 
             <div className="text-center mt-5" >
-            <button className="bg-[#975cec] hover:bg-[#7345b2] hover:transition-all hover:duration-1000 hover:ease-in px-6 py-2 text-white rounded-full" >Explore</button>
+           <Link to="/dashboard" >
+           <button className="bg-[#975cec] hover:bg-[#7345b2] hover:transition-all hover:duration-1000 hover:ease-in px-6 py-2 text-white rounded-full" >Explore</button>
+           </Link>
             </div>
 
             </div>
