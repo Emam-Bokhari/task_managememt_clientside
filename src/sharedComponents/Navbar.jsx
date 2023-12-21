@@ -4,7 +4,7 @@ import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
     return (
-        <div className=" shadow-lg">
+        <div >
         <div className="navbar">
             <div className="navbar-start">
                 {/* Dropdown menu for small screens */}
@@ -24,10 +24,13 @@ const Navbar = () => {
                     </ul>
                 </div>
                 {/* Logo */}
-                <div>
-                    <img className="w-16 h-16" src="https://i.ibb.co/JcLhbRf/logo.png" alt="Logo" />
+                <div className="flex items-center gap-3" >
+                    <img className="w-10 h-10 border-2 ring-2 rounded-full ring-[#fc5025]" src="https://i.ibb.co/Xkc3j5h/logo.png" alt="Logo" /> 
+                    <h2 className="text-xl font-bold text-[#505050]" >Fintask</h2>
                 </div>
             </div>
+
+
             <div className="navbar-center hidden lg:flex">
                 {/* Navigation links */}
                 <ul className="flex gap-5 text-[14px] md:text-base text-[#5c5776] font-normal">
@@ -36,22 +39,19 @@ const Navbar = () => {
                         <NavLink
                             to="/"
                             className={({ isActive, isPending }) =>
-                                isPending ? "pending" : isActive ? "text-[#19cb98] underline" : ""
+                                isPending ? "pending" : isActive ? "text-[#fc5026] underline" : ""
                             }
                         >
                             Home
                         </NavLink>
                     </li>
 
-                   
-
-                    
 
                     <li>
                         <NavLink to="/dashboard"
                             
                             className={({ isActive, isPending }) =>
-                                isPending ? "pending" : isActive ? "text-[#19cb98] underline" : ""
+                                isPending ? "pending" : isActive ? "text-[#fc5026] underline" : ""
                             }
                         >
                             Dashboard
