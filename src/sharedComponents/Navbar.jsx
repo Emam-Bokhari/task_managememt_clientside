@@ -19,7 +19,7 @@ const Navbar = () => {
                         <li><Link to="/">Home</Link></li>
 
 
-                        <li><Link>Dashboard</Link></li>
+                        <li><Link to="/dashboard" >Dashboard</Link></li>
 
                     </ul>
                 </div>
@@ -48,7 +48,7 @@ const Navbar = () => {
                     
 
                     <li>
-                        <NavLink
+                        <NavLink to="/dashboard"
                             
                             className={({ isActive, isPending }) =>
                                 isPending ? "pending" : isActive ? "text-[#19cb98] underline" : ""
