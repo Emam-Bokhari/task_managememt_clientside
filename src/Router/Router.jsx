@@ -9,6 +9,7 @@ import CreateTask from "../Layout/Dashboard/CreateTask/CreateTask";
 import ManageTask from './../Layout/Dashboard/ManageTask/ManageTask';
 import Signin from "../pages/Signin/Signin";
 import Register from './../pages/Register/Register';
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 
 
@@ -46,7 +47,7 @@ const Router = createBrowserRouter([
 
     {
         path: "/dashboard",
-        element: <Dashboard />,
+        element: <PrivateRoute><Dashboard /></PrivateRoute>,
         children: [
             {
                 path: "/dashboard/allTask",

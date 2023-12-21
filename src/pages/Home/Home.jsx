@@ -3,6 +3,7 @@ import Footer from "../../sharedComponents/Footer/Footer";
 import Navbar from "../../sharedComponents/Navbar";
 
 const Home = () => {
+    
     return (
         <div>
             {/* Navbar */}
@@ -21,7 +22,7 @@ const Home = () => {
 
             <div className="text-center mt-5" >
            <Link to="/dashboard" >
-           <button className="bg-[#975cec] hover:bg-[#7345b2] hover:transition-all hover:duration-1000 hover:ease-in px-6 py-2 text-white rounded-full" >Explore</button>
+           <button className="bg-[#975cec] hover:bg-[#7345b2] hover:transition-all hover:duration-1000 hover:ease-in px-6 py-2 text-white rounded-full" >Let&#39;s Explore</button>
            </Link>
             </div>
 
