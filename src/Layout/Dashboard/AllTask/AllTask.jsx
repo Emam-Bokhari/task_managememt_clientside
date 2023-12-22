@@ -5,7 +5,7 @@ import AllTaskCard from "./AllTaskCard";
 const AllTask = () => {
 
     const [tasks] = useCreateTask()
-    console.log(tasks);
+    // console.log(tasks);
 
 
     return (

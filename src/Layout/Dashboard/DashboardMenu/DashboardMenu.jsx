@@ -5,7 +5,7 @@ import { VscTasklist } from "react-icons/vsc";
 import { MdTaskAlt } from "react-icons/md";
 import { useContext } from "react";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
-
+import { IoMdLogOut } from "react-icons/io";
 
 const DashboardMenu = () => {
   const navigate = useNavigate()
@@ -27,6 +27,7 @@ const DashboardMenu = () => {
 
     <div>
 
+      <div>
       <Link
         to={"/dashboard"}
         className="w-full my-2 py-3 px-5 text-dark-01 text-left text-lg font-medium bg-gray-100 hover:bg-gray-200 duration-500 flex items-center gap-3"
@@ -60,11 +61,14 @@ const DashboardMenu = () => {
         <MdTaskAlt className="text-2xl" />{" "}
         <span className="hidden md:block">Manage Task</span>
       </Link>
+      </div>
+
+
 
       <div onClick={handleLogout}
         className="w-full my-2 py-3 px-5 text-dark-01 text-left text-lg font-medium bg-gray-100 hover:bg-gray-200 duration-500 flex items-center gap-3"
       >
-        <MdTaskAlt className="text-2xl" />{" "}
+        <IoMdLogOut className="text-2xl font-bold text-red-600" />{" "}
         <span className="hidden md:block">Logout</span>
       </div>
 

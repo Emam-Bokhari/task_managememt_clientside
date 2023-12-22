@@ -1,10 +1,42 @@
 import { MdAutoDelete } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
+import axios from "axios";
+import Swal from "sweetalert2";
+import useCreateTask from "../../../hooks/useCreateTask";
 
 
 const AllTaskCard = ({data}) => {
-    console.log(data);
-    const { title, description,category,date } = data || {};
+    // console.log(data);
+    const { title, description,category,date,_id } = data || {};
+    const [,refetch]=useCreateTask()
+
+    const handleDeleteTask = (_id) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                axios.delete(`http://localhost:3000/api/v1/${_id}/delete-task`)
+                    .then(res => {
+                        if (res.data.deletedCount > 0) {
+                            refetch();
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Task has been deleted.",
+                                icon: "success"
+                            });
+                        }
+                    })
+            }
+        });
+    }
+    
 
     return (
         <div>
@@ -26,7 +58,7 @@ const AllTaskCard = ({data}) => {
                 </div>
 
                 <div className="flex justify-between mt-3" >
-                    <button><MdAutoDelete className="text-2xl" /></button>
+                    <button onClick={()=>handleDeleteTask(_id)} ><MdAutoDelete className="text-2xl" /></button>
 
                     <button><FaEdit className="text-2xl" /></button>
                 </div>
