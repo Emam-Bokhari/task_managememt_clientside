@@ -6,6 +6,7 @@ import { MdTaskAlt } from "react-icons/md";
 import { useContext } from "react";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
 import { IoMdLogOut } from "react-icons/io";
+import toast from "react-hot-toast";
 
 const DashboardMenu = () => {
   const navigate = useNavigate()
@@ -16,10 +17,10 @@ const DashboardMenu = () => {
     logout()
       .then(() => {
         navigate("/")
-        return alert('Logout Successful!');
+        return toast.success('Logout Successful!');
       })
       .catch((error) => {
-        return alert(error.message);
+        return toast.error(error.message);
       });
   };
 
@@ -71,6 +72,8 @@ const DashboardMenu = () => {
         <IoMdLogOut className="text-2xl font-bold text-red-600" />{" "}
         <span className="hidden md:block">Logout</span>
       </div>
+
+    
 
 
 

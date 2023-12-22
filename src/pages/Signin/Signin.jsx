@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import Navbar from "../../sharedComponents/Navbar";
+import toast from "react-hot-toast";
 
 
 
@@ -23,11 +24,11 @@ const Signin = () => {
         signin(email, password)
         .then(() => {
             navigate(location?.state?location.state:"/")
-            return alert('Login Successfull!')
+            return toast.success('Login Successfull!')
 
         })
         .catch((error) => {
-            return alert(error.message)
+            return toast.error(error.message)
         })
     }
 

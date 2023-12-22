@@ -64,7 +64,8 @@ const CreateTask = () => {
                                 type="text"
                                 name="taskTitle"
                                 placeholder="Task Title"
-                                {...register("taskTitle", { required: true })}
+                                required
+                                {...register("taskTitle")}
                             />
                         </div>
                     </div>
@@ -72,7 +73,8 @@ const CreateTask = () => {
                     <div className="flex flex-col md:flex-row gap-5 my-5">
 
                         <div className="flex-1">
-                            <select className="bg-white w-full p-2 rounded-sm outline-none" name="category" {...register("category", { required: true })}>
+                            <select className="bg-white w-full p-2 rounded-sm outline-none" name="category" {...register("category")}
+                            required>
                                 <option value="" >Select Priority</option>
                                 <option value="Low">Low</option>
                                 <option value="Moderate">Moderate</option>
@@ -81,7 +83,7 @@ const CreateTask = () => {
                         </div>
 
                         <div className="flex-1">
-                            <input className="bg-white w-full p-2 rounded-sm outline-none" type="date" name="date" {...register("date", { required: true })} />
+                            <input className="bg-white w-full p-2 rounded-sm outline-none" type="date" name="date" {...register("date")} required />
                         </div>
                     </div>
 
@@ -91,7 +93,8 @@ const CreateTask = () => {
                             name="description"
                             rows="10"
                             placeholder="Description"
-                            {...register("description", { required: true })}
+                            {...register("description")}
+                            required
                         ></textarea>
                     </div>
 

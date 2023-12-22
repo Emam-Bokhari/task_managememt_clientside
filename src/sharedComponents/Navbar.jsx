@@ -3,6 +3,7 @@ import { BiMenu } from "react-icons/bi";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import { FaCircleUser } from "react-icons/fa6";
+import toast from "react-hot-toast";
 
 
 const Navbar = () => {
@@ -15,10 +16,10 @@ const Navbar = () => {
         logout()
             .then(() => {
                 navigate("/")
-                return alert('Logout Successful!');
+                return toast.success('Logout Successful!');
             })
             .catch((error) => {
-                return alert(error.message);
+                return toast.error(error.message);
             });
     };
 

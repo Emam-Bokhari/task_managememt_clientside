@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import Navbar from "../../sharedComponents/Navbar";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import toast from "react-hot-toast";
 
 const Register = () => {
 
@@ -17,15 +18,15 @@ const Register = () => {
 
         // check password length
         if (data.password.length < 6) {
-            return alert('Password must be at least 6 characters or too long')
+            return toast.error('Password must be at least 6 characters or too long')
         }
         // check capital letter
         else if (!/[A-Z]/.test(data.password)) {
-            return alert('Please make sure your password has at least one capital letter')
+            return toast.error('Please make sure your password has at least one capital letter')
         }
         // check special character
         else if (!/[!@#$%^&*()_+{}[\]:;<>,.?~\\|'"\-=]/.test(data.password)) {
-            return alert('Please make sure at least one special character')
+            return toast.error('Please make sure at least one special character')
         }
 
 
@@ -33,7 +34,7 @@ const Register = () => {
         createUser(data.email, data.password)
             .then(() => {
                 navigate(location?.state?location.state:"/")
-                return alert('Your account has been created successfully!')
+                return toast.success('Your account has been created successfully!')
             })
             .catch((error) => {
                 return alert(error.message);
@@ -45,7 +46,7 @@ const Register = () => {
             googleSignin()
                 .then(() => {
                     navigate(location?.state?location.state:"/")
-                    return alert('Login Successful by Google')
+                    return toast.success('Login Successful by Google')
     
                 })
                 .catch()
@@ -86,7 +87,7 @@ const Register = () => {
                         {/* name */}
                         <div>
                             <p className="text-base font-semibold text-[#8e8e8e]">User Name</p>
-                            <input className="px-2 border-2 border-[#ebebeb] w-full rounded-md outline-[#4b82f2]" type="text"  {...register("name", { required: true })} />
+                            <input className="px-2 border-2 border-[#ebebeb] w-full rounded-md outline-[#4b82f2]" type="text"  {...register("name")} />
                         </div>
 
                         {/* email */}
@@ -105,7 +106,7 @@ const Register = () => {
                         {/* photoURL */}
                         <div>
                             <p className="text-base font-semibold text-[#8e8e8e]">PhotoURL</p>
-                            <input className="px-2 border-2 border-[#ebebeb] w-full rounded-md outline-[#4b82f2]" type="text" {...register("photoURL", { required: true })} name="photoURL" />
+                            <input className="px-2 border-2 border-[#ebebeb] w-full rounded-md outline-[#4b82f2]" type="text" {...register("photoURL")} name="photoURL" />
                         </div>
 
 
