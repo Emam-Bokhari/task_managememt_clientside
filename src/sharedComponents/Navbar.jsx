@@ -127,7 +127,7 @@ const Navbar = () => {
                             </div>
                             <button onClick={handleLogout}
 
-                                className="bg-[#975cec] px-4  py-1 rounded-full text-[#2a2a2a] font-semibold text-lg"
+                                className="bg-[#975cec] px-4  py-1 rounded-full text-white font-semibold text-lg"
                             >
                                 Logout
                             </button>
