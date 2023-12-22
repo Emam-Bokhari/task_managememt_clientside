@@ -1,6 +1,7 @@
 import { Typography } from "@mui/material";
 import { Link, Outlet } from "react-router-dom";
 import DashboardMenu from "./DashboardMenu/DashboardMenu";
+import { Toaster } from "react-hot-toast";
 
 
 const Dashboard = () => {
@@ -51,6 +52,7 @@ const Dashboard = () => {
             <div className="w-20 md:w-1/5"></div>
             <div className="w-[calc(100%-80px)] md:w-4/5 p-6">
               <Outlet />
+              <Toaster/>
             </div>
           </div>
         </div>
