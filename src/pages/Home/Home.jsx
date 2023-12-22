@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Footer from "../../sharedComponents/Footer/Footer";
 import Navbar from "../../sharedComponents/Navbar";
+import TargetAudienceSection from "../../components/TargetAudienceSection/TargetAudienceSection";
 
 const Home = () => {
     
@@ -27,6 +28,9 @@ const Home = () => {
             </div>
 
             </div>
+
+            {/* Target audience section */}
+            <TargetAudienceSection/>
 
             {/* Footer */}
             <Footer/>
