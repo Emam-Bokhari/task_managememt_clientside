@@ -14,9 +14,9 @@ const ManageTask = () => {
 
             </div>
             
-            <div className="grid grid-cols-1 w-64 gap-5  mt-2" >
+           {tasks.length>0? <div className="grid grid-cols-1 w-64 gap-5  mt-2" >
                 {tasks.map((item, index) => <ManageTaskCard key={index} data={item}  />)}
-            </div>
+            </div>:<h2 className="text-center my-20" >No task for manage</h2>}
 
         </div>
     );

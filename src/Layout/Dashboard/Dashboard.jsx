@@ -2,9 +2,13 @@ import { Typography } from "@mui/material";
 import { Link, Outlet } from "react-router-dom";
 import DashboardMenu from "./DashboardMenu/DashboardMenu";
 import { Toaster } from "react-hot-toast";
+import { useContext } from "react";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { FaCircleUser } from "react-icons/fa6";
 
 
 const Dashboard = () => {
+  const {user}=useContext(AuthContext)
   return (
     
       <div className="flex">
@@ -46,6 +50,20 @@ const Dashboard = () => {
               >
                 Dashboard
               </Typography>
+
+              <h2 className="text-center font-medium text-[#2a2a2a] mr-2" >{user?.displayName||"User"}</h2>
+
+              {user.photoURL ? (
+                                    <img
+                                        className="w-9 h-9 rounded-full border-2 border-gray-300 mr-4"
+                                        src={user.photoURL}
+
+                                    />
+                                ) : (
+                                    <FaCircleUser className="text-3xl mr-4" />
+                                )}
+
+              
             </div>
           </div>
           <div className="flex">

@@ -66,7 +66,7 @@ const DashboardMenu = () => {
 
 
       <div onClick={handleLogout}
-        className="w-full my-2 py-3 px-5 text-dark-01 text-left text-lg font-medium bg-gray-100 hover:bg-gray-200 duration-500 flex items-center gap-3"
+        className="w-full my-2 py-3 px-5 text-dark-01 text-left text-lg font-medium bg-gray-100 hover:bg-gray-200 duration-500 flex items-center gap-3 cursor-pointer"
       >
         <IoMdLogOut className="text-2xl font-bold text-red-600" />{" "}
         <span className="hidden md:block">Logout</span>
