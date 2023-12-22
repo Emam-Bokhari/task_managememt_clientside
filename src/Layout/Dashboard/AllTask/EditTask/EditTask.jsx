@@ -1,14 +1,15 @@
-import { useContext } from "react";
-import { AuthContext } from './../../../AuthProvider/AuthProvider';
 import { useForm } from "react-hook-form";
+import { AuthContext } from "../../../../AuthProvider/AuthProvider";
+import { useContext } from "react";
+import { useLoaderData, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import toast from "react-hot-toast";
 
 
-
-
-const CreateTask = () => {
+const EditTask = () => {
+    const task=useLoaderData()
+    console.log(task);
+    const { title, description,category,date,_id } = task || {};
 
     const { register, handleSubmit } = useForm()
     const { user } = useContext(AuthContext)
@@ -21,28 +22,42 @@ const CreateTask = () => {
         const date = data.date
         const description = data.description
 
-        const createTask={title,category,date,description,userEmail}
-        console.log(createTask);
-        
+        const editTask={title,category,date,description,userEmail}
 
-        const createTaskRes= await axios.post("http://localhost:3000/api/v1/create-task",createTask)
-        if(createTaskRes.data.insertedId){
-            toast.success('Task successfully created!')
-            navigate("/dashboard/allTask")
-        }
-        
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, update it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
 
-        console.log(createTaskRes);
+                axios.patch(`http://localhost:3000/api/v1/${_id}/edit-task`, editTask)
+                    .then(res => {
+                        if (res.data.modifiedCount > 0) {
+                            Swal.fire({
+
+                                title: "Updated!",
+                                text: "Task has been updated.",
+                                icon: "success"
+                            });
+                            navigate("/dashboard/allTask")
+                        }
+                    })
+            }
+        });
+
     }
-
-
 
     return (
         <div>
+            
 
-
-            <h2 className="text-2xl md:text-3xl lg:text-4xl text-center font-bold text-[#1a202c]">
-                CREATE <span className="text-[#975cec]">TASK</span>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl text-center font-bold text-[#1a202c] uppercase">
+                Edit <span className="text-[#975cec]">Task</span>
             </h2>
 
             <div className="bg-gray-200 p-6 my-5 rounded-md">
@@ -65,6 +80,8 @@ const CreateTask = () => {
                                 name="taskTitle"
                                 placeholder="Task Title"
                                 {...register("taskTitle", { required: true })}
+                                defaultValue={title}
+                                
                             />
                         </div>
                     </div>
@@ -72,7 +89,9 @@ const CreateTask = () => {
                     <div className="flex flex-col md:flex-row gap-5 my-5">
 
                         <div className="flex-1">
-                            <select className="bg-white w-full p-2 rounded-sm outline-none" name="category" {...register("category", { required: true })}>
+                            <select className="bg-white w-full p-2 rounded-sm outline-none" name="category"
+                            required
+                            {...register("category", { required: true })}>
                                 <option value="" >Select Priority</option>
                                 <option value="Low">Low</option>
                                 <option value="Moderate">Moderate</option>
@@ -81,7 +100,7 @@ const CreateTask = () => {
                         </div>
 
                         <div className="flex-1">
-                            <input className="bg-white w-full p-2 rounded-sm outline-none" type="date" name="date" {...register("date", { required: true })} />
+                            <input className="bg-white w-full p-2 rounded-sm outline-none" type="date" name="date" {...register("date", { required: true })} defaultValue={date} />
                         </div>
                     </div>
 
@@ -91,7 +110,7 @@ const CreateTask = () => {
                             name="description"
                             rows="10"
                             placeholder="Description"
-                            {...register("description", { required: true })}
+                            {...register("description", { required: true })} defaultValue={description}
                         ></textarea>
                     </div>
 
@@ -100,15 +119,15 @@ const CreateTask = () => {
                         <input
                             className="bg-[#975cec] w-full rounded-sm p-2 text-white font-simibold text-xl cursor-pointer"
                             type="submit"
-                            value="Create"
+                            value="Save"
                         />
                     </div>
                 </form>
             </div>
-            
+
 
         </div>
     );
 };
 
-export default CreateTask;
+export default EditTask;

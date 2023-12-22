@@ -10,6 +10,7 @@ import ManageTask from './../Layout/Dashboard/ManageTask/ManageTask';
 import Signin from "../pages/Signin/Signin";
 import Register from './../pages/Register/Register';
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import EditTask from "../Layout/Dashboard/AllTask/EditTask/EditTask";
 
 
 
@@ -56,6 +57,11 @@ const Router = createBrowserRouter([
             {
                 path: "/dashboard/createTask",
                 element: <CreateTask />
+            },
+            {
+                path:"/dashboard/editTask/:id",
+                loader:({params})=>fetch(`http://localhost:3000/api/v1/${params.id}/show-task`),
+                element:<EditTask/>
             },
             {
                 path: "/dashboard/manageTask",

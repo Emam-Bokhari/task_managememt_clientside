@@ -3,12 +3,15 @@ import { FaEdit } from "react-icons/fa";
 import axios from "axios";
 import Swal from "sweetalert2";
 import useCreateTask from "../../../hooks/useCreateTask";
+import { Link } from "react-router-dom";
+
 
 
 const AllTaskCard = ({data}) => {
     // console.log(data);
     const { title, description,category,date,_id } = data || {};
     const [,refetch]=useCreateTask()
+    
 
     const handleDeleteTask = (_id) => {
         Swal.fire({
@@ -60,7 +63,9 @@ const AllTaskCard = ({data}) => {
                 <div className="flex justify-between mt-3" >
                     <button onClick={()=>handleDeleteTask(_id)} ><MdAutoDelete className="text-2xl" /></button>
 
+                    <Link to={`/dashboard/editTask/${_id}`} >
                     <button><FaEdit className="text-2xl" /></button>
+                    </Link>
                 </div>
 
             </div>
