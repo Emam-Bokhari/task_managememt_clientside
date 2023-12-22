@@ -25,7 +25,7 @@ const AllTaskCard = ({data}) => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                axios.delete(`http://localhost:3000/api/v1/${_id}/delete-task`)
+                axios.delete(`https://task-management-serverside-taupe.vercel.app/api/v1/${_id}/delete-task`)
                     .then(res => {
                         if (res.data.deletedCount > 0) {
                             refetch();

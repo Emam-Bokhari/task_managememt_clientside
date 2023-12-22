@@ -25,7 +25,7 @@ const CreateTask = () => {
         console.log(createTask);
         
 
-        const createTaskRes= await axios.post("http://localhost:3000/api/v1/create-task",createTask)
+        const createTaskRes= await axios.post("https://task-management-serverside-taupe.vercel.app/api/v1/create-task",createTask)
         if(createTaskRes.data.insertedId){
             toast.success('Task successfully created!')
             navigate("/dashboard/allTask")

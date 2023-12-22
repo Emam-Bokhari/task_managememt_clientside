@@ -60,7 +60,7 @@ const Router = createBrowserRouter([
             },
             {
                 path:"/dashboard/editTask/:id",
-                loader:({params})=>fetch(`http://localhost:3000/api/v1/${params.id}/show-task`),
+                loader:({params})=>fetch(`https://task-management-serverside-taupe.vercel.app/api/v1/${params.id}/show-task`),
                 element:<EditTask/>
             },
             {

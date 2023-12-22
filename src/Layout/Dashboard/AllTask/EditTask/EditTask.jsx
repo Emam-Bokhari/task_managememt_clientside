@@ -35,7 +35,7 @@ const EditTask = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                axios.patch(`http://localhost:3000/api/v1/${_id}/edit-task`, editTask)
+                axios.patch(`https://task-management-serverside-taupe.vercel.app/api/v1/${_id}/edit-task`, editTask)
                     .then(res => {
                         if (res.data.modifiedCount > 0) {
                             Swal.fire({

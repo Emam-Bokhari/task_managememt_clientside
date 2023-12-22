@@ -13,7 +13,7 @@ const useCreateTask = () => {
    const {refetch,data:tasks=[]}=useQuery({
     queryKey:['tasks',userEmail],
     queryFn:async()=>{
-        const result=await axios.get(`http://localhost:3000/api/v1/show-all-task?userEmail=${userEmail}`)
+        const result=await axios.get(`https://task-management-serverside-taupe.vercel.app/api/v1/show-all-task?userEmail=${userEmail}`)
         return result.data
     }
    })
